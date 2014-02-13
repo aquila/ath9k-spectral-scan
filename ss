@@ -44,7 +44,7 @@ process() {
 		done | base64 -d > /tmp/fft.dump.$i
 
 		cat /tmp/fft.dump.all > /tmp/fft.dump.all.new
-		fft2txt < /tmp/fft.dump.$i | awk '{print $4 " " $6}' >> /tmp/fft.dump.all.new
+		fft2txt < /tmp/fft.dump.$i | awk '{print $4 " " $6 " " $2}' >> /tmp/fft.dump.all.new
 		tail -n $max_samples < /tmp/fft.dump.all.new > /tmp/fft.dump.all.new.limited
 		mv /tmp/fft.dump.all.new.limited /tmp/fft.dump.all
 
@@ -70,5 +70,5 @@ trap '
 ' INT HUP KILL TERM EXIT QUIT
 
 touch /tmp/fft.dump.all
-gnuplot -persistent -e 'plot "/tmp/fft.dump.all"' /tmp/gnuplot.conf & gnuplot=$!
+gnuplot -persistent -e 'plot "/tmp/fft.dump.all" using 1:2:3 w p pt 1 lc variable' /tmp/gnuplot.conf & gnuplot=$!
 spectral_scan | process
