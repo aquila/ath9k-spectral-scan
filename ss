@@ -1,6 +1,7 @@
 #!/bin/sh
 max_samples=15000
 plot_pause=0.05
+host=$1
 
 # The function gathers the binary spectral scan data and outputs it.
 # Each packet looks like this:
@@ -9,7 +10,7 @@ plot_pause=0.05
 #   <base64 line ..>\n
 #   .\n
 spectral_scan() {
-	cat << 'EOF' | ssh steve sh
+	cat << 'EOF' | ssh $host sh
 
 ifconfig wlan1 up
 
