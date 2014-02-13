@@ -1,5 +1,23 @@
 #define _BSD_SOURCE
-#include <endian.h>
+#include <machine/endian.h>
+#ifndef htobe16
+# define htobe16(x) htons(x)
+#endif
+#ifndef htobe32
+# define htobe32(x) htonl(x)
+#endif
+#ifndef be16toh
+# define be16toh(x) ntohs(x)
+#endif
+#ifndef be32toh
+# define be32toh(x) ntohl(x)
+#endif
+#ifndef htobe64
+# define htobe64(x)      (x)
+#endif
+#ifndef be64toh
+# define be64toh(x)      (x)
+#endif
 #include <errno.h>
 #include <stdio.h>
 #include <math.h>
