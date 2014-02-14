@@ -1,5 +1,4 @@
-#define _BSD_SOURCE
-#include <machine/endian.h>
+#include <linux/endian.h>
 #ifndef htobe16
 # define htobe16(x) htons(x)
 #endif
