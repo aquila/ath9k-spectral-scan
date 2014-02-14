@@ -95,6 +95,10 @@ int main() {
 	struct fft_sample_tlv tlv;
 	u8 discard;
 	
+	printf("HTTP/1.0 200 OK\r\n");
+	printf("Access-Control-Allow-Origin: *\r\n");
+	printf("Content-Type: application/json\r\n\r\n")
+	
 	printf("{");
 	
 	printf("\"spectral_scan\": [");
