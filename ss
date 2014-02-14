@@ -12,7 +12,7 @@ host=$1
 spectral_scan() {
 	cat << 'EOF' | ssh $host sh
 
-ifconfig wlan1 up
+ifconfig wlan0 up
 
 while true
 do
@@ -22,7 +22,7 @@ do
 		echo chanscan \
 			| tee /sys/kernel/debug/ieee80211/phy*/ath9k/spectral_scan_ctl \
 			>/dev/null
-		iw wlan1 scan chan-time 5 >/dev/null
+		iw wlan0 scan chan-time 5 >/dev/null
 		cat /sys/kernel/debug/ieee80211/phy*/ath9k/spectral_scan0 | base64
 		echo .
 	done
