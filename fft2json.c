@@ -19,6 +19,7 @@
 #endif
 #include <errno.h>
 #include <stdio.h>
+#include <string.h>
 #include <inttypes.h>
 
 typedef int8_t s8;
@@ -60,9 +61,8 @@ struct fft_sample_ht20 {
 
 static void parse_ht20(void) {
 	struct fft_sample_ht20 sample;
-	int i, data, datasquaresum = 0;
-	float signal, freq;
-
+	int i;
+	
 	memset(&sample, 0, sizeof(sample));
 	if (fread(&sample, sizeof(sample), 1, stdin) != 1) {
 		fprintf(stderr, "error: incomplete read in %s\n", __func__);
