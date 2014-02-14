@@ -96,7 +96,7 @@ static void parse_ht20(void) {
 int main() {
 	struct fft_sample_tlv tlv;
 	u8 discard;
-	bool first = true;
+	u8 first = 1;
 	
 	printf("HTTP/1.1 200 OK\r\n");
 	printf("Access-Control-Allow-Origin: *\r\n");
@@ -115,7 +115,7 @@ int main() {
 		case ATH_FFT_SAMPLE_HT20:
 			if (!first)
 				printf(","); 
-			first = false;
+			first = 0;
 			parse_ht20();
 			break;
 		default:
