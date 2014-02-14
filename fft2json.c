@@ -1,4 +1,4 @@
-#include <linux/endian.h>
+#include <endian.h>
 #ifndef htobe16
 # define htobe16(x) htons(x)
 #endif
