@@ -55,7 +55,7 @@ process() {
 
 # Essential gnuplot real-time drawing config
 cat << EOF > /tmp/gnuplot.conf
-set terminal wxt noraise
+set terminal x11
 set yrange [-128:0]
 pause $plot_pause
 replot
