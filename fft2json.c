@@ -107,7 +107,7 @@ int main() {
 		switch (tlv.type) {
 		case ATH_FFT_SAMPLE_HT20:
 			parse_ht20();
-			printf(",\n");
+			printf(",");
 			break;
 		default:
 			printf("\"error\": \"unsupported TLV type = %hhu\"", tlv.type);
