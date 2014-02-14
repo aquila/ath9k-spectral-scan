@@ -22,7 +22,10 @@ do
 		echo chanscan \
 			| tee /sys/kernel/debug/ieee80211/phy*/ath9k/spectral_scan_ctl \
 			>/dev/null
-		iw wlan0 scan chan-time 5 >/dev/null
+		# original scan code:
+		# iw wlan0 scan chan-time 5
+		# quicker scanning with limited channels:
+		iw wlan0 scan freq 2412  2422  2432  2442  2452  2462 passive >/dev/null
 		cat /sys/kernel/debug/ieee80211/phy*/ath9k/spectral_scan0 | base64
 		echo .
 	done
