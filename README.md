@@ -10,9 +10,10 @@ REQUIREMENTS
 ============
 
  * ath9k and HW w/ spectral scan support
- * gnuplot (with wxt terminal support, install gnuplot-x11 on debian derivatives)
+ * gnuplot (with X11 terminal support)
  * make, gcc
  * POSIX-shell
+ * OSX: base64 installed with Homebrew for GNU compatibility
  * optional: ssh (in case you use remote machine to gather spectral scan)
  * optional: patched kernel and iw for scan chan-time parameter (http://thread.gmane.org/gmane.linux.kernel.wireless.general/111255 http://thread.gmane.org/gmane.linux.kernel.wireless.general/111251])
 
