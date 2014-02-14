@@ -95,7 +95,7 @@ int main() {
 	struct fft_sample_tlv tlv;
 	u8 discard;
 	
-	printf("HTTP/1.0 200 OK\r\n");
+	printf("HTTP/1.1 200 OK\r\n");
 	printf("Access-Control-Allow-Origin: *\r\n");
 	printf("Content-Type: text/plain\r\n\r\n");
 	
@@ -121,7 +121,7 @@ int main() {
 		}
 	}
 	printf("]");
-	printf("}\r\n");
+	printf("}\r\n\r\n");
 	fflush(stdout);
 	return 0;
 }
