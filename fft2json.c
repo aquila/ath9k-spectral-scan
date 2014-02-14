@@ -97,7 +97,7 @@ int main() {
 	
 	printf("HTTP/1.0 200 OK\r\n");
 	printf("Access-Control-Allow-Origin: *\r\n");
-	printf("Content-Type: application/json\r\n\r\n")
+	printf("Content-Type: application/json\r\n\r\n");
 	
 	printf("{");
 	
