@@ -85,15 +85,18 @@ static void parse_ht20(void) {
 	
 	printf("\"data\": [");
 	for (i=0; i<ARRAY_SIZE(sample.data); i++) {
-		printf("%u,", sample.data[i]);
+		if (i != 0)
+			printf(",");
+		printf("%u", sample.data[i]);
 	}
-	printf("],");
+	printf("]");
 	printf("}");
 }
 
 int main() {
 	struct fft_sample_tlv tlv;
 	u8 discard;
+	bool first = true;
 	
 	printf("HTTP/1.1 200 OK\r\n");
 	printf("Access-Control-Allow-Origin: *\r\n");
@@ -110,8 +113,10 @@ int main() {
 
 		switch (tlv.type) {
 		case ATH_FFT_SAMPLE_HT20:
+			if (!first)
+				printf(","); 
+			first = false;
 			parse_ht20();
-			printf(",");
 			break;
 		default:
 			printf("\"error\": \"unsupported TLV type = %hhu\"", tlv.type);
