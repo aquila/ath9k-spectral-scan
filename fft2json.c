@@ -74,16 +74,16 @@ static void parse_ht20(void) {
 	sample.tsf = be64toh(sample.tsf);
 	
 	printf("{");
-	printf("\"max_exp\":%u,", sample.max_exp);
+	printf("\"max_exp\": %u,", sample.max_exp);
 	printf("\"freq\":%u,", sample.freq);
-	printf("\"rssi\":%i,", sample.rssi);
-	printf("\"noise\":%i,", sample.noise);
-	printf("\"max_magnitude\":%u,", sample.max_magnitude);
-	printf("\"max_index\":%u,", sample.max_index);
-	printf("\"bitmap_weight\":%u,", sample.bitmap_weight);
-	printf("\"tsf\":%llu,", sample.tsf);
+	printf("\"rssi\": %i,", sample.rssi);
+	printf("\"noise\": %i,", sample.noise);
+	printf("\"max_magnitude\": %u,", sample.max_magnitude);
+	printf("\"max_index\": %u,", sample.max_index);
+	printf("\"bitmap_weight\": %u,", sample.bitmap_weight);
+	printf("\"tsf\": %llu,", sample.tsf);
 	
-	printf("\"data\"[");
+	printf("\"data\": [");
 	for (i=0; i<ARRAY_SIZE(sample.data); i++) {
 		printf("%u,", sample.data[i]);
 	}
