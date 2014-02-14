@@ -1,0 +1,46 @@
+<html>
+  <head>
+  </head>
+  <body>
+	  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	  <script>
+	  
+	  function convert(raw) {
+		  for (i=0; i < raw.spectral_scan.length; ++i) {
+			  datasquaresum = 0;
+		  	  for (j=0; j < raw.spectral_scan[i].data.length; ++j) {
+				  data =  raw.spectral_scan[i].data[j] << raw.spectral_scan[i].max_exp;
+				  data *= data;
+				  datasquaresum += data;
+		  	  }
+			  
+			  for (j=0; j < raw.spectral_scan[i].data.length; ++j) {
+				  data = raw.spectral_scan[i].data[j] << raw.spectral_scan[i].max_exp;
+				  if (data == 0) data = 1;
+				  signal = raw.spectral_scan[i].noise + raw.spectral_scan[i].rssi +
+				  20 * Math.log(data)/Math.LN10 - Math.log(datasquaresum)/Math.LN10 * 10;
+				  freq = raw.spectral_scan[i].freq - 10 + (20 * j/raw.spectral_scan[i].data.length);
+				  console.log("center-freq " + raw.spectral_scan[i].freq + " freq " + freq + " signal " + signal);
+			  }
+		  }
+	  }
+	  
+	  xmlhttp = new XMLHttpRequest();
+
+	  readData = function() {
+	  	if (xmlhttp.readyState == 4) {
+	  		if (xmlhttp.status == 200) {
+	  			data = jQuery.parseJSON(xmlhttp.responseText);
+				convert(data);
+	  		}
+	  	}
+	
+	  }
+
+	  xmlhttp.onreadystatechange = readData;
+	  xmlhttp.open("GET", "http://143.129.76.52:8080/", true);
+	  xmlhttp.send();
+		
+	  </script>
+  </body>
+</html>
