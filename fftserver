@@ -1,0 +1,8 @@
+#!/bin/ash
+
+(while true; do 
+	echo chanscan > /sys/kernel/debug/ieee80211/phy0/ath9k/spectral_scan_ctl; 
+	iw wlan0 scan freq 2412  2422  2432  2442  2452  2462 passive > /dev/null; 
+	cat /sys/kernel/debug/ieee80211/phy0/ath9k/spectral_scan0 | fft2json | nc -l -p 8080; 
+done) &
+
