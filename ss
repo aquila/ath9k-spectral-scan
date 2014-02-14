@@ -45,7 +45,7 @@ process() {
 		done | base64 -d > /tmp/fft.dump.$i
 
 		cat /tmp/fft.dump.all > /tmp/fft.dump.all.new
-		fft2txt < /tmp/fft.dump.$i | awk '{print $4 " " $6 " " $2}' >> /tmp/fft.dump.all.new
+		./fft2txt < /tmp/fft.dump.$i | awk '{print $4 " " $6 " " $2}' >> /tmp/fft.dump.all.new
 		tail -n $max_samples < /tmp/fft.dump.all.new > /tmp/fft.dump.all.new.limited
 		mv /tmp/fft.dump.all.new.limited /tmp/fft.dump.all
 
