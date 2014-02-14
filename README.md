@@ -30,18 +30,15 @@ USAGE
 =====
 
 	make
-	export PATH="$PWD:$PATH"
 	./ss
-
-
-KNOWN ISSUES
-============
-
-My gnuplot freezes after couple of minutes of running. No CPU usage. Just stops responding.
 
 
 CREDITS
 =======
+
+The original code has been forked from ath9k-spectral-scan by Michał Kazior: 
+
+	https://github.com/kazikcz/ath9k-spectral-scan
 
 The formula has been taken from FFT_eval by Simon Wunderlich:
 
