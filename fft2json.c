@@ -19,8 +19,6 @@
 #endif
 #include <errno.h>
 #include <stdio.h>
-#include <math.h>
-#include <string.h>
 #include <inttypes.h>
 
 typedef int8_t s8;
