@@ -117,7 +117,7 @@ int main() {
 		}
 	}
 	printf("]");
-	printf("}");
+	printf("}\r\n");
 	fflush(stdout);
 	return 0;
 }
